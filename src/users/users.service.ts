@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 @Injectable()
@@ -32,11 +32,11 @@ export class UsersService {
   }
 
   findOne(id: string) {
-    try {
-      return this.userModel.findOne({
-        _id: id,
-      });
-    } catch (error) {}
+    if (!mongoose.Types.ObjectId.isValid(id)) return `not found user`;
+
+    return this.userModel.findOne({
+      _id: id,
+    });
   }
 
   async update(updateUserDto: UpdateUserDto) {
@@ -46,7 +46,11 @@ export class UsersService {
     );
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  remove(id: string) {
+    if (!mongoose.Types.ObjectId.isValid(id)) return `not found user`;
+
+    return this.userModel.deleteOne({
+      _id: id,
+    });
   }
 }
