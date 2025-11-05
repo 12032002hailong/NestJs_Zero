@@ -19,7 +19,7 @@ export class CompaniesController {
 
   @Post()
   create(@Body() createCompanyDto: CreateCompanyDto, @User() user: IUser) {
-    return this.companiesService.create(createCompanyDto);
+    return this.companiesService.create(createCompanyDto, user);
   }
 
   @Get()
