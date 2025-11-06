@@ -17,10 +17,11 @@ import { AuthController } from './auth.controller';
       inject: [ConfigService],
       useFactory: (configService: ConfigService): JwtModuleOptions => ({
         secret:
-          configService.get<string>('JWT_ACCESS_TOKEN') ?? 'default_secret',
+          configService.get<string>('JWT_ACCESS_TOKEN_SECRET') ??
+          'default_secret',
         signOptions: {
           expiresIn: (ms(
-            configService.get<string>('JWT_ACCESS_EXPIRE') ?? '60s',
+            configService.get<string>('JWT_ACCESS_EXPIRE_SECRET') ?? '60s',
           ) /
             1000 +
             's') as any,
