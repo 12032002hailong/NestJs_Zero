@@ -24,6 +24,9 @@ export class User {
   gender: string;
 
   @Prop()
+  role: string;
+
+  @Prop()
   address: string;
 
   @Prop({ type: Object })
