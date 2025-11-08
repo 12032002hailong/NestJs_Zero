@@ -33,7 +33,7 @@ export class UsersController {
   findAll(
     @Query('current') currentPage: string,
     @Query('pageSize') limit: string,
-    @Query() qs: any,
+    @Query() qs: string,
   ) {
     return this.usersService.findAll(+currentPage, +limit, qs);
   }
