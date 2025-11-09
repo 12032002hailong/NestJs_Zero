@@ -41,7 +41,6 @@ export class CreateJobDto {
   company: Company;
 
   @IsNotEmpty({ message: 'Location không được để trống' })
-  @IsString({ message: 'Location phải là chuỗi' })
   location: string;
 
   @IsNotEmpty({ message: 'Salary không được để trống' })

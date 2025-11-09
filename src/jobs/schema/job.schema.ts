@@ -19,7 +19,7 @@ export class Job {
   skills: string[];
 
   @Prop()
-  location: number;
+  location: string;
 
   @Prop()
   salary: number;
