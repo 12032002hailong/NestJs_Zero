@@ -7,7 +7,6 @@ import {
   Param,
   Delete,
   Query,
-  Res,
 } from '@nestjs/common';
 import { CompaniesService } from './companies.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
@@ -41,7 +40,7 @@ export class CompaniesController {
   }
 
   @Patch(':id')
-  @ResponseMessage('Update a new company')
+  @ResponseMessage('Update a  company')
   update(
     @Param('id') id: string,
     @Body() updateCompanyDto: UpdateCompanyDto,
@@ -51,7 +50,7 @@ export class CompaniesController {
   }
 
   @Delete(':id')
-  @ResponseMessage('Delete a new company')
+  @ResponseMessage('Delete a  company')
   remove(@Param('id') id: string, @User() user: IUser) {
     return this.companiesService.remove(id, user);
   }
