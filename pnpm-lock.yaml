@@ -39,8 +39,8 @@ importers:
         specifier: ^1.0.38
         version: 1.0.38
       api-query-params:
-        specifier: ^6.0.1
-        version: 6.0.1
+        specifier: ^5.4.0
+        version: 5.4.0
       bcryptjs:
         specifier: ^3.0.2
         version: 3.0.3
@@ -1306,9 +1306,8 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
-  api-query-params@6.0.1:
-    resolution: {integrity: sha512-RGiq0N7IwGjR2m0LqW5nttwk+DgOt2kGA1iO3fDmpcbfxNQxhhNYAkDEnSloq5DBN2f4/xv+vaGILnLO4UR/GA==}
-    engines: {node: '>=18'}
+  api-query-params@5.4.0:
+    resolution: {integrity: sha512-dQ6HwtM4Z7Kpmcbd5jZr3PzwwB7mj0tRbOaP3WTA+YOmFcGyj/8hpD65O7QqvcbToTcFjQDznSmlLms24UaFhA==}
 
   append-field@1.0.0:
     resolution: {integrity: sha512-klpgFSWLW1ZEs8svjfb7g4qWY0YS5imI82dTg+QahUvJ8YqAY0P10Uk8tTyh9ZGuYEZEMaeJYCF5BFuX552hsw==}
@@ -4708,7 +4707,7 @@ snapshots:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  api-query-params@6.0.1: {}
+  api-query-params@5.4.0: {}
 
   append-field@1.0.0: {}
 

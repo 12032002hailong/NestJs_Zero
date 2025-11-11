@@ -88,6 +88,7 @@ export class RolesService {
         apiPath: 1,
         name: 1,
         method: 1,
+        module: 1,
       },
     });
   }
@@ -95,9 +96,9 @@ export class RolesService {
   async update(_id: string, updateRoleDto: UpdateRoleDto, user: IUser) {
     const { name, description, isActive, permissions } = updateRoleDto;
 
-    if (!mongoose.Types.ObjectId.isValid(_id)) {
-      throw new BadRequestException(`Role với name = ${name} đã tồn tại`);
-    }
+    // if (!mongoose.Types.ObjectId.isValid(_id)) {
+    //   throw new BadRequestException(`Role với name = ${name} đã tồn tại`);
+    // }
 
     const updated = await this.roleModel.updateOne(
       { _id },
@@ -116,6 +117,11 @@ export class RolesService {
   }
 
   async remove(_id: string, user: IUser) {
+    const foundRole = await this.roleModel.findById(_id);
+    if (foundRole?.name === 'ADMIN') {
+      throw new BadRequestException('Không thể xóa role ADMIN');
+    }
+
     await this.roleModel.updateOne(
       {
         _id,
