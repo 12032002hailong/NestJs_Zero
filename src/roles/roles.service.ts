@@ -8,6 +8,7 @@ import { IUser } from 'src/users/user.interface';
 import { isEmpty } from 'class-validator';
 import aqp from 'api-query-params';
 import mongoose from 'mongoose';
+import { ADMIN_ROLE } from 'src/databases/sample';
 
 @Injectable()
 export class RolesService {
@@ -118,7 +119,7 @@ export class RolesService {
 
   async remove(_id: string, user: IUser) {
     const foundRole = await this.roleModel.findById(_id);
-    if (foundRole?.name === 'ADMIN') {
+    if (foundRole?.name === ADMIN_ROLE) {
       throw new BadRequestException('Không thể xóa role ADMIN');
     }
 

@@ -13,15 +13,13 @@ import { LocalAuthGuard } from './local-auth.guard';
 import { RegisterUserDto } from 'src/users/dto/create-user.dto';
 import type { Request, Response } from 'express';
 import type { IUser } from 'src/users/user.interface';
-import { UsersService } from 'src/users/users.service';
-import { JwtService } from '@nestjs/jwt';
+import { RolesService } from 'src/roles/roles.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(
     private authService: AuthService,
-    private userService: UsersService,
-    private jwtService: JwtService,
+    private rolesService: RolesService,
   ) {}
 
   @Public()
@@ -44,7 +42,11 @@ export class AuthController {
 
   @Get('account')
   @ResponseMessage('Get user information')
-  handleGetAccount(@User() user: IUser) {
+  async handleGetAccount(@User() user: IUser) {
+    const temp = (await this.rolesService.findOne(user?.role?._id)) as any;
+    if (user) {
+      user.permissions = temp?.permissions;
+    }
     return { user };
   }
 
