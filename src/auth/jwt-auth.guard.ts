@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';
+import { Request } from 'express';
 import { IS_PUBLIC_KEY } from 'src/decorator/customize';
 
 @Injectable()
@@ -23,8 +24,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     return super.canActivate(context);
   }
 
-  handleRequest(err, user, info) {
-    // You can throw an exception based on either "info" or "err" arguments
+  handleRequest(err, user, info, context: ExecutionContext) {
+    const request: Request = context.switchToHttp().getRequest();
+
     if (err || !user) {
       throw (
         err ||
@@ -33,6 +35,21 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
         )
       );
     }
+
+    //check permissions
+    const targetMethod = request.method;
+    const targetEndpoint = request.route?.path;
+
+    const permissions = user?.permissions ?? [];
+    const isExist = permissions.find(
+      (permission) =>
+        targetEndpoint === permission?.method &&
+        targetMethod === permission?.apiPath,
+    );
+    if (!isExist) {
+      throw new UnauthorizedException('Bạn không có quyền truy cập');
+    }
+
     return user;
   }
 }
