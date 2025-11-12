@@ -12,6 +12,8 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor(reflector));
   app.useGlobalPipes(new ValidationPipe());
 
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+
   //config cookies
   app.use(cookieParser());
 
