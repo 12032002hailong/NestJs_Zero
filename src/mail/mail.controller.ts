@@ -22,10 +22,10 @@ export class MailController {
     private jobModel: Model<JobDocument>,
   ) {}
 
-  @Cron(CronExpression.EVERY_30_SECONDS)
-  testCron() {
-    console.log('>>> call testCron');
-  }
+  // @Cron(CronExpression.EVERY_30_SECONDS)
+  // testCron() {
+  //   console.log('>>> call testCron');
+  // }
 
   @Get()
   @Public()
