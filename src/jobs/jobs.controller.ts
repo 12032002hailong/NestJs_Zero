@@ -51,7 +51,7 @@ export class JobsController {
   }
 
   @Delete(':id')
-  @ResponseMessage('Delete a new job')
+  @ResponseMessage('Delete a  job')
   remove(@Param('id') id: string, @User() user: IUser) {
     return this.jobsService.remove(id, user);
   }
