@@ -30,34 +30,8 @@ export class MailController {
   @Get()
   @Public()
   @ResponseMessage('Test email')
+  @Cron('0 10 0 * * 0')
   async handleTestEmail() {
-    const jobs = [
-      {
-        name: 'Senior Backend Developer (Node.js)',
-        company: 'TechCorp Solutions',
-        salary: 5000,
-        skills: ['Node.js', 'TypeScript', 'AWS', 'PostgreSQL'],
-      },
-      {
-        name: 'Product Manager',
-        company: 'Innovate Hub',
-        salary: 4500,
-        skills: ['Agile', 'Scrum', 'Roadmap Planning', 'UX/UI'],
-      },
-      {
-        name: 'Frontend Developer (React)',
-        company: 'VinaWeb Creators',
-        salary: 3000,
-        skills: ['React', 'Redux', 'HTML5', 'CSS3', 'JavaScript'],
-      },
-      {
-        name: 'Data Analyst',
-        company: 'Data Insights Ltd.',
-        salary: 3500,
-        skills: ['SQL', 'Python', 'Tableau', 'Power BI'],
-      },
-    ];
-
     const subscribers = await this.subscriberModel.find({});
     for (const subs of subscribers) {
       const subsSkills = subs.skills;
