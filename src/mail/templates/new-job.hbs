@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mail new job</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+          'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <table
+      width="100%"
+      border="0"
+      cellspacing="0"
+      cellpadding="0"
+      style="background-color: #f5f5f5; padding: 2rem;"
+    >
+      <tr>
+        <td align="center">
+          <table
+            width="600"
+            border="0"
+            cellspacing="0"
+            cellpadding="0"
+            style="
+              max-width: 600px;
+              background-color: #ffffff;
+              border-radius: 8px;
+              overflow: hidden;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            "
+          >
+            <tr>
+              <td align="center" style="padding: 25px 30px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td
+                      style="
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #333;
+                        text-align: left;
+                      "
+                    >
+                      HLD
+                    </td>
+                    <td
+                      style="
+                        font-size: 16px;
+                        color: #777;
+                        text-align: right;
+                      "
+                    >
+                      Ít nhưng mà chất
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 0 30px 20px 30px; font-size: 16px; color: #555;">
+                <div style="font-size: 18px; font-weight: 500; margin-bottom: 15px;">
+                  Hi {{receiver}},
+                </div>
+                <div>
+                  Một trong những công việc này có thể là bến đỗ tiếp theo của bạn.
+                  Tìm hiểu ngay hôm nay!
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 0 30px 10px 30px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  {{#each jobs}}
+                  <tr>
+                    <td
+                      style="
+                        padding: 20px 0;
+                        {{#unless @last}}
+                        border-bottom: 1px solid #eeeeee;
+                        {{/unless}}
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 18px;
+                          font-weight: bold;
+                          margin-bottom: 5px;
+                        "
+                      >
+                        <a
+                          href="https://example.com"
+                          target="_blank"
+                          style="color: #007bff;"
+                        >
+                          {{name}}
+                        </a>
+                      </div>
+                      <div
+                        style="
+                          font-size: 15px;
+                          color: #555;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        {{company}}
+                      </div>
+                      <div
+                        style="
+                          font-size: 15px;
+                          color: #28a745;
+                          font-weight: bold;
+                          margin-bottom: 15px;
+                        "
+                      >
+                        {{salary}}
+                      </div>
+                      <div>
+                        {{#each skills}}
+                        <span
+                          style="
+                            font-size: 12px;
+                            background-color: #f0f0f0;
+                            color: #555;
+                            padding: 4px 10px;
+                            border-radius: 12px;
+                            margin-right: 5px;
+                            margin-bottom: 5px;
+                            display: inline-block;
+                          "
+                        >
+                          {{this}}
+                        </span>
+                        {{/each}}
+                      </div>
+                    </td>
+                  </tr>
+                  {{/each}}
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding: 30px;">
+                <a
+                  href="https://example.com"
+                  target="_blank"
+                  style="
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #ffffff;
+                    text-decoration: none;
+                    background-color: #ea1e30;
+                    padding: 12px 25px;
+                    border-radius: 5px;
+                    display: inline-block;
+                  "
+                >
+                  Xem thêm job tại IT
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 0 30px 30px 30px; font-size: 14px; color: #777;">
+                Cheers,<br />
+                WangJu.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
